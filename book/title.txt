@@ -1,2 +1,2 @@
-% Crystal for Rubyists
+% Crystal pour les Rubyistes
 % Serdar Dogruyol
