@@ -1,0 +1,12 @@
+*.epub
+*.mobi
+*.pdf
+*.tgz
+book/chapter-*.html
+book/book.html
+book/index.html
+book/preamble.html
+.cache/
+logs/
+.DS_Store
+.crystal
