@@ -1,25 +1,29 @@
-Preamble
+Préambule
 ========
 
-Nobody should only learn one programming language. Before Ruby, I wrote
-things in C, Java, PHP, and all sorts of things. I've always
-said that I love Ruby, but maybe someday, something would come along
-that'd be better for what I was building.
+Personne ne devrait apprendre un seul langage de programmation.
+Avant Ruby, j'ai codé en C, Java, PHP, et beaucoup d'autres.
+J'ai toujours dit que j'adoré Ruby mais q'un jour peut-être,
+il arriverait quelque chose qui répondrait mieux à mes
+besoins de développement.
 
-I'm not sure if Crystal is that language yet, but it is damn interesting.
-One of the worst things about Crystal is that there's next to no
-documentation, though. So, I decided that as I figured things out, I'd
-write them out so that you don't have to suffer the way I did. Maybe
-'suffer' is too strong a word; Crystal is worth the hassle, though.
+Je suis pas encore sûr que Crystal soit ce langage, mais
+il est très intéressant. Un des inconvénients de Crystal est
+qu'il manque cruellement de documentation, malheureusement.
+J'ai donc décidé qu'au fur et à mesures de mes expérimentations,
+je les mettrais à plat pour que vous ne souffriez pas autant que moi.
+La notion de 'souffrance' est peut-être un peu forte;
+L'apprentissage de Crystal en vaut vraiment la peine.
 
-In this book, we'll talk about why you should care about Crystal, how to
-get up and running, the basics of writing software in Crystal, and maybe
-even something like building a Ruby gem with Crystal.
+Dans ce livre, nous verrons pourquoi se soucier de Crystal, comment
+bien démarrer, les bases du développement en Crystal, et peut-être
+même quelque chose comme développer un gemme Ruby avec Crystal.
 
-NOTE: While this book is called "Crystal for Rubyists," it should be
-accessible to anyone who knows about OOP and programming in a
-dynamically typed language. I will make analogies that will make the
-most sense to Rubyists, but you can still get a lot out of this book if
-you are a programmer of a different sort. If your favorite language is
-static, then you're already ahead of the game. You can just disregard a
-lot of the analogies.
+NOTE: Bien que ce livre soit intitulé "Crystal pour les Rubyistes,"
+il devrait être accessible à toute personne connaissant la programmation
+orientée objet et la programmation dans un langage à typage dynamique.
+Je ferai des analogies qui parleront plus aux Rubyistes, mais vous
+pourrez toujours apprendre beaucoup de ce livre si vous venez
+d'un autre langage. Si votre langage préféré a un typage statique,
+alors vous êtes déjà bien parti. Vous pouvez simplement ne pas tenir
+d'une partie des analogies.
