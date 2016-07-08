@@ -1,42 +1,44 @@
 \newpage
 
-# Why Crystal?
+# Pourquoi Crystal?
 
-You already write software in Ruby. It pays your bills. You enjoy it.
-Why should you care about Crystal?
+Vous développez déjà en Ruby. Ça paye les factures. Vous aimez coder avec.
+Pourquoi vous intéresseriez-vous à Crystal?
 
-Let's think about Ruby for a minute: what's its biggest weakness? For
-me, it's these things:
+Réfléchissons une minute à Ruby: quels sont ses principaux défauts?
+Pour moi, ils sont:
 
--   Concurrency
--   Speed
+-   Concurrence
+-   Rapidité
 -   Documentation
 
-What's awesome about Ruby?
+Qu'est-ce qui est super dans Ruby?
 
--   Blocks
--   Vaguely functional
--   Syntax is pretty easy
--   Focus on developer happiness
--   Get up and running quickly
--   Dynamically typed
+-   Blocs
+-   Aspects fonctionnels
+-   Syntaxe simple
+-   Centré sur l'expérience développeur
+-   Prise en main rapide
+-   Typage dynamique
 
-So we could learn a lot from a language that's easy as Ruby, handles concurrency well,
-and is fast. We don't want to sacrifice anonymous functions, pretty syntax,
-or not making `AbstractFactoryFactoryImpls` just to get work done.
+Nous pouvons donc apprendre beaucoup d'un langage aussi simple que Ruby,
+qui gère bien la concurrence, et est rapide. Nous ne voulons pas sacrifier
+les fonctions anonymes, la syntaxe élégante, ou ne pas faire
+`AbstractFactoryFactoryImpls` juste pour faire le job.
 
-I think that language is *Crystal*.
+Je pense que ce langage est *Crystal*.
 
-Now: Crystal is not perfect. It is getting better.
-But the point is to *learn*. and using a language that's very familiar, yet very different, can teach us a lot.
+Maintenant: Crystal n'est pas parfait. Mais il s'améliore.
+Et le but est d'*apprendre*. Et utiliser un langage
+qui est très familier, tout en étant très différent, peut nous apprendre beaucoup.
 
-Here's "Hello World" in Crystal:
+Voici un "Hello World" en Crystal:
 
 ```ruby
 puts "Hello, world!"
 ```
 
-Here's a concurrent "Hello World" in Crystal:
+Voici une version concurrente de "Hello World" en Crystal:
 
 ```ruby
 channel = Channel(String).new
@@ -48,7 +50,7 @@ channel = Channel(String).new
 end
 ```
 
-Here's a rough port to Ruby:
+La même, portée grossièrement en Ruby:
 
 
 ```ruby
@@ -59,16 +61,18 @@ Here's a rough port to Ruby:
 end.each(&:join)
 ```
 
-That's it. Note the stuff that's *similar* to Ruby:
+Et voilà. Remarquez les choses *similaires* avec Ruby:
 
--   Pretty same syntax.
--   Variables, while statically typed, have inference, so we don't need to declare types
+-   La même syntaxe élégante.
+-   Les variables, tout en étant statiquement typées, supportent l'inférence,
+nous n'avons donc pas besoin de déclarer les types.
 
-Here's some stuff that's *different*:
+Remarquez les choses qui sont *différentes*:
 
--   Being compiled and statically typed the compiler will yell at us if we mess up.
+-   Étant compilé et statiquement typé, le compilateur va nous jeter
+    si nous avons fait une erreur.
 
-Oh, and:
+Ah, et:
 
     $ time ./hello
     ./hello  0.00s user 0.00s system 73% cpu 0.008 total
@@ -76,10 +80,10 @@ Oh, and:
     $ time ruby hello.rb
     ruby hello.rb  0.03s user 0.01s system 94% cpu 0.038 total
 
-Five times faster. Yay irrelevant microbenchmarks!
+Cinq fois plus rapide. Chouette, des micro tests de performance complétement inutiles!
 
-Anyway, I hope you get my point: There's lots of things about Crystal that
-make it syntactically vaguely similar enough to Ruby that you can feel
-at home. And its strengths are some of Ruby's
-greatest weaknesses. That's why I think you can learn a lot from playing
-with Crystal, even if you don't do it as your day job.
+Quoi qu'il en soit, j'espère que vous avez saisi l'essentiel: Crystal présente
+assez de similarités syntaxiques avec Ruby pour que vous vous sentiez
+en terrain connu. Et ses forces sont certaines des plus grandes faiblesses
+de Ruby. C'est pourquoi je pense que vous en apprendrez beaucoup en testant
+Crystal, même si vous le faites en dehors de votre cadre de travail.
