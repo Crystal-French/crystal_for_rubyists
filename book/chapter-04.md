@@ -1,12 +1,12 @@
 \newpage
 
-# Creating a new project
+# Créer un nouveau projet
 
-Up until now we've used the `crystal` command to only run our code.
+Jusqu'à présent nous avons utilisé la commande `crystal` uniquement pour exécuter notre code.
 
-Actually `crystal` command is pretty useful and does lot more than that. (check `crystal --help` for more)
+En fait la commande `crystal` est très utile et ne se résume pas qu'à ça (exécutez `crystal --help` pour en savoir plus).
 
-For example we can use it to create a new Crystal project.
+Par exemple nous pouvons l'utiliser pour créer un nouveau projet Crystal.
 
     $ crystal init app sample
       create  sample/.gitignore
@@ -18,33 +18,35 @@ For example we can use it to create a new Crystal project.
       create  sample/src/sample/version.cr
       create  sample/spec/spec_helper.cr
       create  sample/spec/sample_spec.cr
-Initialized empty Git repository in
-/Users/serdar/crystal_for_rubyists/code/04/sample/.git/
+    Initialized empty Git repository in
+    /Users/serdar/crystal_for_rubyists/code/04/sample/.git/
 
-Awesome. `crystal` helped us create a new project. Let's see what it did for us.
+Fantastique. `crystal` nous a permis de créer un nouveau projet.
+Voyons voir ce qu'il a fait pour nous:
 
-  - Created a new folder named sample
-  - Created a LICENSE
-  - Created `.travis.yml` to easily integrate Travis for continous integration.
-  - Created `shard.yml` for dependency management.
-  - Initialized an empty Git repository
-  - Created a README for our project
-  - Created `src` and `spec` folders to put our code and tests(ssh..we'll talk about it soon) in it.
+  - Création d'un nouveau dossier nommé `sample`,
+  - Création d'un fichier de licence LICENSE,
+  - Création d'un `.travis.yml` pour intégrer facilement Travis pour l'intégration continue,
+  - Création d'un `shard.yml` pour la gestion des dépendances,
+  - Initialisation d'un dépôt Git vide,
+  - Création d'un README pour notre projet,
+  - Création des dossiers `src` et `spec` pour contenir notre code et nos tests(chut..nous en discuterons bientôt).
 
-Let's run it.
+Exécutons tout ça:
 
     $ cd sample
     $ crystal src/sample.cr
 
-Nothing! Yay :)
+Rien ne se passe! Super :)
 
-Now that we create our first project. Let's use some external libraries.
+Maintenant que nous avons créé notre premier projet, utilisons des librairies externes.
 
-## Using Shards for dependency management
+## Utiliser des Shards pour la gestion des dépendances
 
-To manage dependencies of a project we use `shards`. `shards` is like `bundler` and `shard.yml` is like `Gemfile`.
+Pour gérer les dépendances d'un projet nous utilisons des `shards`. `shards` est l'équivalent de `bundler`
+et `shard.yml` l'équivalent de `Gemfile`.
 
-Let's open up `shard.yml`.
+Ouvrons notre `shard.yml`.
 
 ```yaml
 name: sample
@@ -56,19 +58,23 @@ authors:
 license: MIT
 ```
 
-This is a default `shard.yml` and it contains the minimal necessary information about our project. Those are
+C'est le fichier `shard.yml` par défaut et contient les informations minimales nécessaires sur notre projet. Elles sont:
 
-- `name` specifies the name of the project
-- `version` specifies the version of the project. Crystal itself uses [semver](http://semver.org/) for version management so it's a good convention for you to follow.
-- `authors` section specifies the authors of the project. By default this is taken from your global `git` configuration.
-- `license` specifies the type of your project license. By default this is `MIT`.
+- `name` spécifie le nom du projet,
+- `version` spécifie la version du project. Crystal utilise lui-même [semver](http://semver.org/)
+  pour la gestion des versions c'est donc une bonne convention à suivre dans vos propres projets,
+- `authors` section qui spécifie les auteurs du projet. Récupéré par défaut depuis votre configuration `git` globale,
+- `license` spécifie le type de la licence de votre projet. `MIT` par défaut.
 
-Okay. That's great but what can we do with this `shard.yml`? Well we can use this file to add external libraries(we call it dependency) and manage them without even
-worrying about any folders / paths e.g.. Sweet isn't it?
+Okay. Mais que peut-on faire avec ce `shard.yml`?
+Et bien on peut utiliser ce fichier pour ajouter des librairies externes( que nous appelons dépendances)
+et pour les gérer sans même avoir à nous soucier de dossiers, chemins, etc... Sympathique non?
 
-Now that we know the true power of `shards` let's add [Kemal](https://github.com/sdogruyol/kemal) to our `shard.yml` and build a simple web application :)
+Maintenant que nous connaissons toute la puissance des `shards`, ajoutons [Kemal](https://github.com/sdogruyol/kemal)
+à notre `shard.yml` et développons une application web toute simple :)
 
-Open up `shard.yml`. First we need to add `Kemal` as a dependency to our project. We do this by including
+Ouvrez `shard.yml`. Tout d'abord nous avons besoin d'ajouter `Kemal` comme dépendance de notre projet.
+Pour cela on y inclut:
 
 ```yaml
 dependencies:
@@ -77,13 +83,13 @@ dependencies:
     version: 0.8.0
 ```
 
-That's great! Now we added `Kemal` to our project. First, we need to install it.
+C'est très bien! Nous avons ajouté `Kemal` à notre projet. D'abors, nous devons l'installer.
 
     $ shards install
     Updating https://github.com/sdogruyol/kemal.git
     Installing kemal v0.8.0
 
-Okay now we are ready to use `Kemal` in our project. Open up `src/sample.cr`
+Okay maintenant nous sommes prêts à utiliser `Kemal` dans notre projet. Ouvrez `src/sample.cr`:
 
 ```ruby
 require "./sample/*"
@@ -98,13 +104,13 @@ module Sample
 end
 ```
 
-Look how we used `require` to access `Kemal` in our program.
+Remarquez comme nous avons utilisé `require` pour rendre disponible `Kemal` dans notre programme.
 
-Let's run.
+Exécutons tout ça.
 
     $ crystal src/sample.cr
     [development] Kemal is ready to lead at http://0.0.0.0:3000
 
-Go to `localhost:3000` and see it in action!
+Ouvrez `localhost:3000` et voyez votre programme en action!
 
-Now you know how to add dependencies and use others' `shard`s :)
+Maintenant vous savez comment ajouter des dépendances et utiliser d'autres `shard`s :)

@@ -1,42 +1,44 @@
 \newpage
 
-# Installing Crystal
+# Installer Crystal
 
 
-Binary installers
------------------
+Installateurs
+-------------
 
-The Crystal project provides official binary installers. You can get both releases
-and nightlies. Binary installers are the fastest and easiest way to get going
-with Crystal. Because Crystal is written in Crystal, compiling the Crystal compiler actually
-entails compiling it three times! This means it's quite slow. But a binary install
-should be snappy!
+Le projet Crystal propose des installateurs officiels. Vous pouvez obtenir
+la version stable comme de développement. Les installateurs sont le moyen
+le plus rapide et le plus simple pour démarrer avec Crystal.
+Parce-que Crystal est écrit en Crystal, compiler le compilateur Crystal
+nécessite en fait de le compiler trois fois! C'est donc très lent. Mais
+avec un installateur tout est rapide.
 
-Crystal has a [lovely installation page](http://crystal-lang.org/docs/installation/index.html),
-so I recommend you just go check that out and download the proper version.
+Crystal a une [page d'installation fort sympathique](http://crystal-lang.org/docs/installation/index.html),
+je vous recommande donc de vous y référer et de télécharger la bonne version.
 
-Note that this book has been tested with Crystal 0.12.0, and so if you use the latest
-nightly, something may have changed.
+Notez que ce livre a été testé avec Crystal 0.12.0, alors si vous utilisez
+la dernière version de développement, certaines choses ont peut-être changé.
 
-From Source
------------
+Depuis les Sources
+------------------
 
-You will probably build the nightly version if you build from source, so
-be ready for some bugs in the code samples. This book was written for 0.10.0.
+Vous compilerez sûrement la dernière version si vous utilisez les sources,
+alors attendez-vous à certains bugs dans les exemples de code. Ce livre
+a été écrit pour Crystal 0.10.0.
 
-The [Crystal README](http://crystal-lang.org/docs/installation/from_source_repository.html)
-has great instructions for building form source. Just got follow their
-instructions!
+Le [README Crystal](http://crystal-lang.org/docs/installation/from_source_repository.html)
+contient de très bonnes instructions pour compiler depuis les sources.
+Suivez simplement les instructions!
 
-### Future Proofing
+### Révisions futures
 
-The version this book is written for is 0.12.0. While the language itself is
-pretty stable, things like the standard library and some major subsystems are
-being revised. I'll be tweaking it with every new release.
+La version pour laquelle ce livre a été écrit est la 0.12.0.
+Bien que le langage soit plutôt stable, certaines choses comme la librairie standard et
+certains sous-systèmes majeurs sont en cours de révision. Je peaufinerai tout ça
+à chaque nouvelle version.
 
-If you run
+Si vous exécutez
 
     $ crystal
 
-and it spits out a bunch of help information, you're good to go with
-Crystal.
+et il vous sort tout un tas d'informations d'aide, vous êtes prête à utiliser Crystal.
