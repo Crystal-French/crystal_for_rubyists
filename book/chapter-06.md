@@ -2,24 +2,23 @@
 
 # FizzBuzz
 
-Of course, the first thing that your job interview for that cushy new
-Crystal job will task you with is building FizzBuzz. Let's do it!
+Assurément, la première chose qu'on vous demandera en entretien professionnel
+pour ce nouveau boulot tranquille en Crystal sera de développer FizzBuzz. Allons-y!
 
-If you're not familiar, FizzBuzz is a simple programming problem:
+Si vous ne le connaissez pas, FizzBuzz est un petit problème de programmation:
 
-> "Write a program that prints the numbers from 1 to 100. But for multiples of
-> three print “Fizz” instead of the number and for the multiples of five print
-> “Buzz”. For numbers which are multiples of both three and five print
-> “FizzBuzz”."
+> "Ecrire un programme qui affiche les nombres de 1 à 100. Mais pour les multiples de
+> trois afficher 'Fizz' à la place et pour les multiples de cinq afficher 'buzz'.
+> Pour les nombres qui sont multiples de trois et cinq, afficher 'FizzBuzz'."
 
-This will give us a good excuse to go over some basics of Crystal: Looping,
-tests, printing to standard output, and a host of other simple things.
+Cela nous donnera une bonne excuse pour voir les bases de Crystal: boucles,
+tests, affichage sur la sortie standard, et tout plein d'autres petites choses.
 
-First, let's create our project.
+D'abord, créons notre projet.
 
     $ crystal init app fizzbuzz
 
-Let's write our first failing test. Open up `/spec/fizzbuz_spec.cr`
+Ecrivons notre premier test en échec. Ouvrez `/spec/fizzbuz_spec.cr`
 
 ```ruby
 require "./spec_helper"
@@ -31,7 +30,7 @@ describe Fizzbuzz do
 end
 ```
 
-And run it:
+Et exécutons-le:
 
     $ crystal spec
     Error in ./spec/fizzbuzz_spec.cr:7: undefined method 'div_by_three'
@@ -39,8 +38,8 @@ And run it:
     div_by_three(1).should eq(false)
 
 
-This makes sense: We haven't defined any method yet. Let's define
-one:
+Cela est logique: nous n'avons encore défini aucune méthode.
+Définissons-en une:
 
 ```ruby
 require "./fizzbuzz/*"
@@ -50,9 +49,9 @@ def div_by_three(n)
 end
 ```
 
-Akin to Ruby, the value of the last expression gets returned.
+De la même manière que Ruby, la valeur de la dernière expression sert de valeur de retour.
 
-TDD means do the simplest thing! Now that we've defined our method, let's compile and run our tests:
+En TDD il faut aller au plus simple! Notre méthode définie, compilons et exécutons nos tests:
 
     $  crystal spec
     .
@@ -61,7 +60,7 @@ TDD means do the simplest thing! Now that we've defined our method, let's compil
     1 examples, 0 failures, 0 errors, 0 pending
 
 
-Awesome! We pass! Let's write another test, and see what happens:
+Fantastique! Ça passe! Ecrivons un nouveau test, et voyons ce qui se passe:
 
 ```ruby
 require "./spec_helper"
@@ -77,7 +76,7 @@ describe Fizzbuzz do
 end
 ```
 
-Run it!
+Exécutons-le!
 
     $ crystal spec
 
@@ -100,7 +99,7 @@ Run it!
 
     crystal spec ./spec/fizzbuzz_spec.cr:8 # Fizzbuzz should divide 3 by 3
 
-We have 1 failure. Let's make this pass.
+Nous avons une erreur. Faisons-la passer.
 
 ```ruby
 require "./fizzbuzz/*"
@@ -114,7 +113,7 @@ def div_by_three(n)
 end
 ```
 
-Run it.
+Exécutons-la.
 
     $ crystal spec
 
@@ -123,10 +122,11 @@ Run it.
     Finished in 0.61 milliseconds
     2 examples, 0 failures, 0 errors, 0 pending
 
-Awesome! This shows off how `else` work, as well. It's probably what you
-expected. Go ahead and try to refactor this into a one-liner.
+Fantastique! Cela démontre également le fonctionnement de `else`.
+Sûrement ce à quoi vous vous attendiez. Continuez et essayez
+de refactoriser ça en un uniligne.
 
-Done? How'd you do? Here's mine:
+C'est fait? Comment feriez-vous? Voici ma version:
 
 ```ruby
 def div_by_three(n)
@@ -134,11 +134,12 @@ def div_by_three(n)
 end
 ```
 
-Remember, the value of the last expression gets returned.
+Rappelez-vous, la valeur de la dernière expression est retournée.
 
-Okay, now try to TDD out the `div_by_five` and `div_by_fifteen` methods. They
-should work the same way, but this will let you get practice actually
-writing it out. Once you see this, you're ready to advance:
+Okay, maintenant essayez d'appliquer le principe du TDD sur
+les `div_by_five` et `div_by_fifteen`.
+Elles devraient être similaires, mais cela vous fera faire un peu de pratique
+de les écrire. Dès que vous avez ce résultat, vous pouvez passer à la suite:
 
     $ crystal spec -v
 
@@ -153,9 +154,9 @@ writing it out. Once you see this, you're ready to advance:
     Finished in 0.61 milliseconds
     6 examples, 0 failures, 0 errors, 0 pending
 
-Okay! Let's talk about the main program now. We've got the tools to
-build FizzBuzz, let's make it work. First thing we need to do is print
-out all the numbers from one to 100. It's easy!
+Okay! Voyons maintenant le programme principal.
+Nous avons les outils pour coder FizzBuzz, faisons-le marcher.
+Nous devons commencer par afficher tous les nombres de 1 à 100. Facile!
 
 ```ruby
 1...100.times do |num|
@@ -163,12 +164,12 @@ out all the numbers from one to 100. It's easy!
 end
 ```
 
-Step one: print **something** 100 times. If you run this via
-`crystal build src/fizzbuzz.cr && ./fizzbuzz` you should see `num` printed
-100 times. Note that our tests didn't actually run. Not only are they not run,
-they're actually not even in the executable:
+Première étape: afficher **quelque chose** 100 fois. Si vous exécutez ça avec
+`crystal build src/fizzbuzz.cr && ./fizzbuzz` vous devriez voir `num` affiché
+100 fois. Notez que nos tests ne sont pas exécutés. Non seulement ils ne sont pas exécutés,
+ils ne sont en plus pas dans le binaire.
 
-Now we can put the two together:
+Maintenant nous pouvons mettre les deux ensemble:
 
 ```ruby
 1...100.times do |num|
@@ -188,7 +189,7 @@ Now we can put the two together:
 end
 ```
 
-Because the `if` returns a value, we could also do something like this:
+Parce-que le `if` renvoie une valeur, nous pourrions aussi faire quelque chose comme:
 
 ```ruby
 1..100.times do |num|
@@ -206,6 +207,6 @@ Because the `if` returns a value, we could also do something like this:
 end
 ```
 
-Try running it.
+Essayez de l'exécuter.
 
-Awesome! We've conquered FizzBuzz.
+Fantastique! Nous avons vaincu FizzBuzz.

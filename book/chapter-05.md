@@ -1,14 +1,15 @@
 \newpage
 
-# Testing
+# Tests
 
-Rubyists love testing, so before we go any farther, let's talk about
-testing. In Crystal, there is a testing framework built in, and it's
-named `spec`. It's pretty similar to `RSpec`.
+Les rubyistes adorent les tests, alors avant d'aller plus loin,
+parlons tests. Crystal est livré avec son propre framework de tests,
+`spec`. Il est très similaire à `RSpec`.
 
-Let's continue with the project we created in Chapter 04.
+Revenons au projet que nous avons créé au Chapitre 04.
 
-As you remember `crystal` created this project structure for us.
+Si vous vous souvenez bien `crystal` a créé une structure
+de projet pour nous.
 
     $ cd sample && tree
     -- LICENSE
@@ -22,13 +23,16 @@ As you remember `crystal` created this project structure for us.
         -- version.cr
       -- sample.cr
 
-Did you see that `spec` folder? Yes, as you guess Crystal created this folder and the first spec for us.
-In Crystal a file is tested with corresponding `_spec` file. Since we named our project as `sample` it created a file named `sample.cr`
-and the corresponding spec with `spec/sample_spec.cr`.
+Vous avez remarqué ce dossier `spec`? Oui, comme vous l'avez deviné Crystal a créé ce dossier
+et la première spécification pour nous.
+Avec Crystal un fichier est testé avec un fichier `_spec` correspondant.
+Etant donné que nous avons nommé notre projet `sample`, un fichier nommé `sample.cr`
+a été créé ainsi que la spécification correspondante `spec/sample_spec.cr`.
 
-By the way, in this context `spec` and `unit test` means the same so we can use them interchangeably.
+Au passage, dans ce contexte `spécification` et `test unitaire` signifient
+la même chose et peuvent-être utilisés indifférement.
 
-Without further ado lets open up `spec/sample_spec.cr`
+Sans plus attendre ouvrons `spec/sample_spec.cr`
 
 ```ruby
 require "./spec_helper"
@@ -42,18 +46,20 @@ describe Sample do
 end
 ```
 
-Now this file is pretty interesting. There a three important keywords, `describe`, `it` and `should`.
+Ce fichier est très intéressant. On y trouve trois mots-clés importants, `describe`, `it` et `should`.
 
-Those keywords are only used in `spec`s with the following purposes.
+Ces mots-clés sont uniquement utilisés dans `spec` pour les besoins suivants:
 
-- `describe` lets you group related specs.
-- `it` is used for defining a spec with the given title in between "".
-- `should` is used for making assumptions about the spec.
+- `describe` vous permet de grouper des tests,
+- `it` est utilisé pour définir un test avec un titre donné entre guillemets doubles,
+- `should` est utilisé pour décrire les suppositions du test.
 
-As you can see this file has a group `describe`d as `Sample` and `it` has one spec with the title of `works` which makes the
-assumption that false `should` equal true.
+Comme vous pouvez le voir notre fichier a un groupe décrit (`describe`) comme `Sample`
+qui a un test avec le titre `work` (`it "works"`) qui fait la supposition que false devrait
+(`should`) être égal à true.
 
-You might be asking 'How do we run these tests?'. Well `crystal` command to the rescue.
+Vous vous demandez peut-être 'Comment exécuter ces tests'? Et bien la commande `crystal`
+vient à notre rescousse.
 
     $ crystal spec
     F
@@ -75,8 +81,9 @@ You might be asking 'How do we run these tests?'. Well `crystal` command to the 
 
     crystal spec ./spec/sample_spec.cr:6 # Sample works
 
-Yay! We got a failing(red) test. Reading the output we can easily find which spec failed.
-Here it's the spec within the group of `Sample` titled `works` a.k.a `Sample works`. Let's make it pass(green).
+Super! Nous avons un test en échec(rouge). Par la lecture de la sortie nous pouvons
+facilement savoir quel test a échoué. Ici c'est le test dans le groupe `Sample` nommé `works` a.k.a `Sample works`.
+Faisons en sorte que ce test passe (vert)
 
 ```ruby
 require "./spec_helper"
@@ -90,7 +97,7 @@ describe Sample do
 end
 ```
 
-Rerun the specs.
+Re-exécutez les tests.
 
     $ crystal spec
 
@@ -99,4 +106,4 @@ Rerun the specs.
     Finished in 0.63 milliseconds
     1 examples, 0 failures, 0 errors, 0 pending
 
-Green! That's all you need to know to get started. Next up: FizzBuzz.
+Vert! C'est tout ce dont vous avez besoin pour débuter. Dans la suite: FizzBuzz.
