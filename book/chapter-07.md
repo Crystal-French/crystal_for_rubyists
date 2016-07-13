@@ -1,13 +1,14 @@
 \newpage
 
-# Types and Method Overloading
+# Types et surcharge de méthode
 
-Crystal is like Ruby, but it's not Ruby!
+Crystal est comme Ruby, mais ce n'est pas Ruby!
 
-Unlike Ruby, Crystal is a statically typed and compiled language. Most of the time you don't have to specify
-the types and the compiler is smart enough to do `type inference`.
+A la différence de Ruby, Crystal est un langage compilé et statistiquement typé.
+La plupart du temps vous n'avez pas à spécifier les types et le compilateur est assez
+intelligent pour faire de l'`inférence de type`.
 
-So why do we need types? Let's start with something simple.
+Alors avons-nous besoin de ces types? Commençons avec quelque chose de simple.
 
 ```ruby
 def add(x, y)
@@ -17,20 +18,22 @@ end
 add 3, 5 # 8
 ```
 
-This is the same in Ruby! We just defined a method that adds two numbers.
-What if we try to add a number to a string?
+C'est la même chose qu'en Ruby! Nous avons juste défini une méthode qui ajoute deux nombres.
+Que se passe-t-il si nous essayons d'ajouter un nombre à une chaîne?
 
-First let's do that in Ruby.
+Commençons par le faire en Ruby.
 
 ```ruby
 add 3, "Serdar"
 TypeError: String can't be coerced into Fixnum
 ```
 
-What??? We just got a `TypeError` but we don't have to care about types in Ruby ( or not :)).
-This is also a `runtime error` meaning that your program just crashed at runtime (definitely not good).
+Comment??? Qu'est-ce que tu dis? Nous avons eu une erreur `TypeError`
+mais nous n'avons pas à nous soucier des types en Ruby ( ou pas :)).
+C'est aussi une erreur `runtime error` signifiant que votre programme a crashé
+à l'exécution, ce qui n'indique rien de bon.
 
-Now let's do the same in Crystal.
+Maitenant faisons la même chose en Crystal.
 
     Error in ./types.cr:7: instantiating 'add(Int32, String)'
 
@@ -53,11 +56,15 @@ Now let's do the same in Crystal.
 
     x + y
 
-Okay, that's quite a scary output but actually it's great. Our Crystal code didn't compile and also told us that there's no
-overload for `Int32#+` and showed us the possible overloads. This is a `compile time error` meaning that our code didn't compile
-and we catch the error before running the program. Lovely!
+Okay, plutôt impressionnant comme sortie mais ça a du bon.
+Notre code Crystal n'a pas compilé et nous a aussi indiqué qui n'y a pas
+de surcharge pour `Int32#+` et nous affiche les surcharges possibles.
+C'est une `compile time error` qui signifie que notre code n'a pas compilé
+et que l'erreur a été récupérée avant d'exécuter le programme. Ce qui est
+fort agréable.
 
-Now let's add some types and restrict that method to only accept `Number`s.
+Maintenant ajoutons des types et une contrainte à cette méthode
+pour qu'elle n'accepte que des `Number`s.
 
 ```ruby
 def add(x : Number, y : Number)
@@ -67,7 +74,7 @@ end
 puts add 3, "Serdar"
 ```
 
-Run it.
+Exécutez-la.
 
     Error in ./types.cr:7: no overload matches 'add' with types Int32, String
     Overloads are:
@@ -76,18 +83,20 @@ Run it.
     add 3, "Serdar"
     ^~~
 
-Awesome! Our program didn't compile again. And this time with shorter and more accurate error output.
-We just used `type restriction` on `x` and `y`. We restricted them to be `Number` and Crystal is smart
-enough to stop us from using the method with a `String`.
+Super! A nouveau, notre méthode n'a pas compilé. Et cette fois-ci avec une erreur plus succinte et précise.
+Nous avons utilisé la `restriction de type` sur `x` et `y`.
+Nous les avons restreints à des `Number`s et Crystal est assez intelligent
+pour nous empêcher d'utiliser la méthode avec une `String`.
 
-## Method Overloading
+## Surcharge de Méthode
 
+Nous venons juste de voir de nombreuses surchages.
+Parlons de la `Surcharge de Méthode`.
 
-We just saw a lot of overloads. Let's talk about `Method Overloading`.
+La surcharge de méthode c'est avoir différentes méthodes avec le même noms et différents nombres d'arguments.
+Elles ont toutes le même nom mais en réalité ce sont des méthodes différentes.
 
-Method overloading is having different methods with the same name and different number of arguments. They all have the same name but actually they are all different methods.
-
-Let's overload our `add` method and make it work with a String.
+Surchargeons notre méthode `add` et faisons-la fonctionner avec une String.
 
 ```ruby
 def add(x : Number, y : Number)
@@ -103,11 +112,12 @@ puts add 3, 5
 puts add 3, "Serdar"
 ```
 
-Let's run it.
+Exécutons-la.
 
     $ crystal types.cr
     8
     3Serdar
 
-Now, that's method overloading in action. It figured out that we are calling the method with a Number and String and called the appropriate method.
-You can define as many overload methods as you wish.
+Ceci est la surcharge de méthode en action.
+L'appel à la méthode avec un Number et une String a automatiquement déduit la méthode appropriée à exécuter.
+Vous pouvez définir autant de méthodes surchargées que vous le voulez.
