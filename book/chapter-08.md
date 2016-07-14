@@ -1,10 +1,10 @@
 \newpage
 
-# Concurrency and Channels
+# Concurrence et Channels
 
-Did you remember Chapter 1? We did a concurrent Hello World!
+Vous vous souvenez du Chapitre 1? Nous avions écrit une version concurrente de Hello World!
 
-Here's a quick reminder.
+Voici un petit rappel.
 
 ```ruby
 channel = Channel(String).new
@@ -16,26 +16,31 @@ channel = Channel(String).new
 end
 ```
 
-In Crystal we use the keyword `spawn` to make something work in the background without blocking the main execution.
+Dans Crystal nous utilisons le mot-clé `spawn` pour faire exécuter quelque chose
+en arrière-plan sans bloquer l'exécution principale.
 
-To achieve this `spawn` creates a lightweight thread called `Fiber`. `Fiber`s are very cheap to create and you can easily
-create tens of thousands of `Fiber`s on a single core.
+Pour arriver à cela `spawn` crée un thread léger appelé `Fiber`.
+Des `Fiber`s sont peu coûteux à créer et vous pouvez facilement créer
+des dizaines de milliers de `Fiber`s sur un même coeur.
 
-Okay, that's really cool! We can use `spawn` to make stuff work in the background but how do we get something back from a `Fiber`.
+Okay, c'est cool! Nous pouvons utiliser `spawn` pour exécuter quelque chose en arrière-plan
+mais comment récupérer quelque chose depuis un `Fiber`.
 
-Now that's where `Channel`s come to play.
+C'est ici que les `Channel`s entrent en jeu.
 
 ## Channel
 
-As the name stands a `Channel` is a channel between a sender and the receiver. Therefore a `Channel` lets each other communicate with `send` and `receive` methods.
+Comme son nom l'indique un `Channel` est un canal entre un expéditeur et un destinataire.
+Ainsi un `Channel` leur permet de communiquer l'un avec l'autre à l'aide des méthodes `send` et `receive`.
 
-Let's take a line by line look at our previous example.
+Examinons ligne par ligne notre exemple précédent.
 
 ```ruby
 channel = Channel(String).new
 ```
 
-We create a `Channel` with `Channel(String).new`. Note that we are creating a `Channel` which will `send` and `receive` messages with type of `String`.
+Nous créons un `Channel` avec `Channel(String).new`.
+Remarquez que nous un avons créé un `Channel` qui envoie (`send`) et reçoit (`receive`) des messages de type `String`.
 
 ```ruby
 10.times do
@@ -46,19 +51,22 @@ We create a `Channel` with `Channel(String).new`. Note that we are creating a `C
 end
 ```
 
-Leaving the loop aside, we are sending a message to our channel inside `spawn`.
-You might ask 'Why are we sending message in the background?' Well, `send` is a blocking operation and if we do that in the main program we gonna block the program forever.
+Passons la boucle, nous envoyons ensuite un message dans notre canal avec `spawn`.
+Vous vous demandez peut-être 'Pourquoi envoyons-nous un message en arrière-plan?'.
+Parce-que `send` est une opération bloquante et si nous le faisons dans le programme principal,
+nous allons le bloquer indéfiniment.
 
-Consider this:
+Considérez ceci:
 
 ```ruby
 channel = Channel(String).new
-channel.send "Hello?" # This blocks the program execution
+channel.send "Hello?" # Ceci bloque l'exécution du programme
 puts channel.receive
 ```
 
-What's the output of this program? Actually this program won't ever finish because it gets blocked by `channel.send "Hello?"`.
-Now that we know why we use `spawn` to send a message let's continue.
+Quelle est la sortie de ce programme? En fait, ce programme ne terminera jamais son exécution
+parce-qu'il sera bloqué par `channel.send "Hello?"`.
+Maintenant que nous savons pourquoi nous utilisons `spawn` pour envoyer un message, continuons.
 
 ```ruby
 spawn {
@@ -67,4 +75,6 @@ spawn {
 puts channel.receive
 ```
 
-We just sent a message through our channel in the background with `spawn`. Then we receive it back with `channel.receive`. In this example the message is `Hello?` so this program prints `Hello?` and then finishes.
+Nous envoyons juste un message dans notre canal en arrière-plan avec `spawn`.
+Ensuite nous le réceptionnons avec `channel.receive`.
+Dans cet exemple le message est `Hello?` donc ce programme affiche `Hello?` puis termine.
