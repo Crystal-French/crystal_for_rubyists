@@ -139,7 +139,7 @@ Rappelez-vous, la valeur de la dernière expression est retournée.
 Okay, maintenant essayez d'appliquer le principe du TDD sur
 les `div_by_five` et `div_by_fifteen`.
 Elles devraient être similaires, mais cela vous fera faire un peu de pratique
-de les écrire. Dès que vous avez ce résultat, vous pouvez passer à la suite:
+de les écrire. Dès que vous obtenez le même résultat suivant, vous pouvez passer à la suite:
 
     $ crystal spec -v
 
@@ -209,4 +209,4 @@ end
 
 Essayez de l'exécuter.
 
-Fantastique! Nous avons vaincu FizzBuzz.
+Fantastique! Nous sommes venus à bout de FizzBuzz.

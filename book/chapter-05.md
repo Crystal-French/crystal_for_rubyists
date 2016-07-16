@@ -38,7 +38,7 @@ Sans plus attendre ouvrons `spec/sample_spec.cr`
 require "./spec_helper"
 
 describe Sample do
-  # TODO: Write tests
+  # TODO: Ecrire des tests
 
   it "works" do
     false.should eq(true)
@@ -54,7 +54,7 @@ Ces mots-clés sont uniquement utilisés dans `spec` pour les besoins suivants:
 - `it` est utilisé pour définir un test avec un titre donné entre guillemets doubles,
 - `should` est utilisé pour décrire les suppositions du test.
 
-Comme vous pouvez le voir notre fichier a un groupe décrit (`describe`) comme `Sample`
+Comme vous pouvez le voir notre fichier a un groupe décrit (`describe`) par le nom `Sample`
 qui a un test avec le titre `work` (`it "works"`) qui fait la supposition que false devrait
 (`should`) être égal à true.
 

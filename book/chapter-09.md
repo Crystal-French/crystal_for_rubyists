@@ -46,6 +46,6 @@ Cette macro s'étend en:
 Plutôt sympathique! On a un comportement
 équivalent à `eval` à la compilation.
 
-Les macros sont vraiment puissantes mais il y a une règle que vous ne pouvez enfeindre.
+Les macros sont vraiment puissantes mais il y a une règle que vous ne pouvez enfreindre.
 
 ***Une macro doit s'étendre en un programme Crystal valide***

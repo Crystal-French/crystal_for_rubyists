@@ -8,7 +8,7 @@ au lieu de réécrire chacune d'entre elles.
 Dans Crystal, c'est très simple d'utiliser des librairies C existantes
 à l'aide de liaisons(bindings). Crystal lui-même utilise des librairies C.
 
-Par exemple Crystal utilise `libpcre` pour son implémentation de `Regex`.
+Par exemple Crystal utilise `libpcre` dans son implémentation de `Regex`.
 
 Comme je l'ai déjà dit c'est très simple d'écrire des liaisons avec C.
 Crystal utilise lui-même `libpcre` comme cela

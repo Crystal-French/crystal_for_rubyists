@@ -24,7 +24,7 @@ Des `Fiber`s sont peu coûteux à créer et vous pouvez facilement créer
 des dizaines de milliers de `Fiber`s sur un même coeur.
 
 Okay, c'est cool! Nous pouvons utiliser `spawn` pour exécuter quelque chose en arrière-plan
-mais comment récupérer quelque chose depuis un `Fiber`.
+mais comment récupérer quelque chose depuis un `Fiber`?
 
 C'est ici que les `Channel`s entrent en jeu.
 

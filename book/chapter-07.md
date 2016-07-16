@@ -58,7 +58,7 @@ Maitenant faisons la même chose en Crystal.
 
 Okay, plutôt impressionnant comme sortie mais ça a du bon.
 Notre code Crystal n'a pas compilé et nous a aussi indiqué qui n'y a pas
-de surcharge pour `Int32#+` et nous affiche les surcharges possibles.
+la surcharge attendue pour `Int32#+` et nous affiche les surcharges possibles.
 C'est une `compile time error` qui signifie que notre code n'a pas compilé
 et que l'erreur a été récupérée avant d'exécuter le programme. Ce qui est
 fort agréable.
@@ -93,7 +93,8 @@ pour nous empêcher d'utiliser la méthode avec une `String`.
 Nous venons juste de voir de nombreuses surchages.
 Parlons de la `Surcharge de Méthode`.
 
-La surcharge de méthode c'est avoir différentes méthodes avec le même noms et différents nombres d'arguments.
+La surcharge de méthode c'est avoir différentes méthodes avec le même nom mais avec
+un nombre différent d'arguments.
 Elles ont toutes le même nom mais en réalité ce sont des méthodes différentes.
 
 Surchargeons notre méthode `add` et faisons-la fonctionner avec une String.
