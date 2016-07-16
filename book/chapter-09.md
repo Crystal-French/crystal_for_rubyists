@@ -1,18 +1,20 @@
 \newpage
 
-# Macros and Metaprogramming
+# Macros et Metaprogramming
 
-We love Ruby because of its' dynamic nature and metaprogramming! Unlike Ruby, Crystal is a compiled language.
-That's why there are some key differences.
+On aime Ruby pour son côté dynamique et la métaprogrammation!
+A la différence de Ruby, Crystal est un langage compilé.
+C'est pour cela que l'on trouve certaines différences:
 
-- There's no `eval`.
-- There's no `send`.
+- Il n'y a pas d'`eval`.
+- Il n'y a pas de `send`.
 
-In Crystal we use `Macro`s to achieve this kind of behaviour and metaprogramming. You can think of `Macro`s as 'Code that writes/modifies code'.
+Dans Crystal on utilise des `Macro`s pour obtenir le même comportement et la métaprogrammation.
+Vous pouvez voir les `Macro`s comme 'du Code qui écrit/modifie du code'.
 
-P.S: `Macro`s are expanded into code at compile-time.
+P.S: Les `Macro`s sont étendues en code à la compilation.
 
-Check this.
+Testez cela.
 
 ```ruby
 macro define_method(name, content)
@@ -22,7 +24,7 @@ macro define_method(name, content)
 end
 
 define_method foo, 1
-# This generates:
+# Qui génère:
 #
 #     def foo
 #       1
@@ -31,7 +33,9 @@ define_method foo, 1
 foo # => 1
 ```
 
-In the example we created a macro named `define_method` and we just called that macro like a normal method. That macro expanded into
+Dans cet exemple nous avons créé une macro nommée `define_method`
+et nous avons fait un appel à cette macro comme n'importe quelle méthode.
+Cette macro s'étend en:
 
 ```ruby
   def foo
@@ -39,8 +43,9 @@ In the example we created a macro named `define_method` and we just called that 
   end
 ```
 
-Pretty cool! We got `eval` behaviour at compile-time.
+Plutôt sympathique! On a un comportement
+équivalent à `eval` à la compilation.
 
-Macros are really powerful but there's one rule that you can't break.
+Les macros sont vraiment puissantes mais il y a une règle que vous ne pouvez enfeindre.
 
-***A macro should expand into a valid Crystal program***
+***Une macro doit s'étendre en un programme Crystal valide***
