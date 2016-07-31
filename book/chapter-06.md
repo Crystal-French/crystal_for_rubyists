@@ -182,7 +182,7 @@ Maintenant nous pouvons mettre les deux ensemble:
   elsif div_by_five num
     answer = "Buzz"
   else
-    answer = ""
+    answer = num
   end
 
   puts answer
@@ -200,7 +200,7 @@ Parce-que le `if` renvoie une valeur, nous pourrions aussi faire quelque chose c
   elsif div_by_five num
     "Buzz"
   else
-    ""
+    num
   end
 
   puts answer
