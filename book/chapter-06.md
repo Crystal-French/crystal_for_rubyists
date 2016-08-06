@@ -159,7 +159,7 @@ Nous avons les outils pour coder FizzBuzz, faisons-le marcher.
 Nous devons commencer par afficher tous les nombres de 1 à 100. Facile!
 
 ```ruby
-1...100.times do |num|
+100.times do |num|
   puts num
 end
 ```
@@ -172,12 +172,12 @@ ils ne sont en plus pas dans le binaire.
 Maintenant nous pouvons mettre les deux ensemble:
 
 ```ruby
-1...100.times do |num|
+100.times do |num|
   answer = ""
 
   if div_by_fifteen num
     answer = "FizzBuzz"
-  elsif div_by_three(num)
+  elsif div_by_three num
     answer = "Fizz"
   elsif div_by_five num
     answer = "Buzz"
@@ -192,10 +192,10 @@ end
 Parce-que le `if` renvoie une valeur, nous pourrions aussi faire quelque chose comme:
 
 ```ruby
-1..100.times do |num|
+(1..100).each do |num|
   answer = if div_by_fifteen num
     "FizzBuzz"
-  elsif div_by_three(num)
+  elsif div_by_three num
     "Fizz"
   elsif div_by_five num
     "Buzz"
@@ -207,6 +207,7 @@ Parce-que le `if` renvoie une valeur, nous pourrions aussi faire quelque chose c
 end
 ```
 
+Remarquez que nous avons aussi changé `100.times` en `(1..100).each`, afin que `num` aille de 1 à 100 au lieu de 0 à 99.
 Essayez de l'exécuter.
 
 Fantastique! Nous sommes venus à bout de FizzBuzz.

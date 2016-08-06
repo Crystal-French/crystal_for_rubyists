@@ -21,21 +21,26 @@ add 3, 5 # 8
 C'est la même chose qu'en Ruby! Nous avons juste défini une méthode qui ajoute deux nombres.
 Que se passe-t-il si nous essayons d'ajouter un nombre à une chaîne?
 
+```ruby
+add 3, "Serdar"
+```
+
 Commençons par le faire en Ruby.
 
 ```ruby
-add 3, "Serdar"
-TypeError: String can't be coerced into Fixnum
+types.cr:2:in `+': String can't be coerced into Fixnum (TypeError)
+       from types.cr:2:in `add'
+       from types.cr:5:in `<main>'
 ```
 
-Comment??? Qu'est-ce que tu dis? Nous avons eu une erreur `TypeError`
+Comment??? Nous avons eu une erreur `TypeError`
 mais nous n'avons pas à nous soucier des types en Ruby ( ou pas :)).
 C'est aussi une erreur `runtime error` signifiant que votre programme a crashé
 à l'exécution, ce qui n'indique rien de bon.
 
 Maitenant faisons la même chose en Crystal.
 
-    Error in ./types.cr:7: instantiating 'add(Int32, String)'
+    Error in ./types.cr:5: instantiating 'add(Int32, String)'
 
     add 3, "Serdar"
     ^~~
@@ -55,6 +60,7 @@ Maitenant faisons la même chose en Crystal.
     - Int32#+()
 
     x + y
+      ^
 
 Okay, plutôt impressionnant comme sortie mais ça a du bon.
 Notre code Crystal n'a pas compilé et nous a aussi indiqué qui n'y a pas
@@ -76,12 +82,12 @@ puts add 3, "Serdar"
 
 Exécutez-la.
 
-    Error in ./types.cr:7: no overload matches 'add' with types Int32, String
+    Error in ./types.cr:5: no overload matches 'add' with types Int32, String
     Overloads are:
     - add(x : Number, y : Number)
 
-    add 3, "Serdar"
-    ^~~
+    puts add 3, "Serdar"
+         ^~~
 
 Super! A nouveau, notre méthode n'a pas compilé. Et cette fois-ci avec une erreur plus succinte et précise.
 Nous avons utilisé la `restriction de type` sur `x` et `y`.

@@ -18,8 +18,7 @@ Par exemple nous pouvons l'utiliser pour créer un nouveau projet Crystal.
       create  sample/src/sample/version.cr
       create  sample/spec/spec_helper.cr
       create  sample/spec/sample_spec.cr
-    Initialized empty Git repository in
-    /Users/serdar/crystal_for_rubyists/code/04/sample/.git/
+    Initialized empty Git repository in /Users/serdar/crystal_for_rubyists/code/04/sample/.git/
 
 Fantastique. `crystal` nous a permis de créer un nouveau projet.
 Voyons voir ce qu'il a fait pour nous:
@@ -80,14 +79,18 @@ Pour cela on y inclut:
 dependencies:
   kemal:
     github: sdogruyol/kemal
-    version: 0.8.0
+    version: 0.14.1
 ```
 
 C'est très bien! Nous avons ajouté `Kemal` à notre projet. D'abors, nous devons l'installer.
 
     $ shards install
     Updating https://github.com/sdogruyol/kemal.git
-    Installing kemal v0.8.0
+    Updating https://github.com/luislavena/radix.git
+    Updating https://github.com/jeromegn/kilt.git
+    Installing kemal (0.14.1)
+    Installing radix (0.3.0)
+    Installing kilt (0.3.3)
 
 Okay maintenant nous sommes prêts à utiliser `Kemal` dans notre projet. Ouvrez `src/sample.cr`:
 
@@ -102,6 +105,8 @@ module Sample
   end
 
 end
+
+Kemal.run
 ```
 
 Remarquez comme nous avons utilisé `require` pour rendre disponible `Kemal` dans notre programme.
